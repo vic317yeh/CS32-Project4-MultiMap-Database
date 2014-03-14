@@ -400,8 +400,6 @@ void MultiMap::valueNode::setPrev(valueNode* newNode){
 
 
 
-
-
 /////////////////////////////////////MultiMap::keyNode class
 MultiMap::valueNode* MultiMap::keyNode::getValueRoot() const{
     return valueRoot;
