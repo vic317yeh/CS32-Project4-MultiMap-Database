@@ -1,3 +1,11 @@
+//
+//  MultiMap.cpp
+//  Project 4
+//
+//  Created by Vic Yeh on 3/11/14.
+//  Copyright (c) 2014 Vic Yeh. All rights reserved.
+//
+
 #include "MultiMap.h"
 
 //////////////////////////////////////MultiMap class
@@ -7,11 +15,8 @@ MultiMap::MultiMap(){
     m_root=NULL;
 }
 
-
 //destructor
-MultiMap::~MultiMap(){
-    clear();
-}
+MultiMap::~MultiMap(){}
 
 
 //public functions
@@ -23,11 +28,13 @@ void MultiMap::deleteSubTree(keyNode* ptr){
     deleteSubTree(ptr->getRight());
     
     valueNode* vNode=ptr->getValueRoot();
+    
     while (vNode!=NULL){
         valueNode* temp=vNode->getNext();
         delete vNode;
         vNode=temp;
     }
+
     delete ptr;
 }
 
@@ -72,6 +79,7 @@ MultiMap::keyNode* MultiMap::searchEq(keyNode* node, std::string key) const{
     return NULL;
 }
 
+
 MultiMap::Iterator MultiMap::findEqual(std::string key) const{
     Iterator it(searchEq(m_root,key));
     
@@ -113,8 +121,11 @@ MultiMap::keyNode* MultiMap::searchEqOrSu(keyNode* node,keyNode* topNode, string
             else return NULL;
         }
     }
+    
     return NULL;
 }
+
+
 
 
 MultiMap::Iterator MultiMap::findEqualOrSuccessor(std::string key) const{
@@ -122,6 +133,7 @@ MultiMap::Iterator MultiMap::findEqualOrSuccessor(std::string key) const{
     
     return it;
 }
+
 
 
 //recursive sub-function for findEqualOrPredecessor()
@@ -172,32 +184,34 @@ MultiMap::Iterator MultiMap::findEqualOrPredecessor(std::string key) const{
 
 //insert a new node into the BST
 void MultiMap::insert(std::string key, unsigned int value){
-    keyNode* ptr=m_root;
-    
     //check root node
-    if (ptr==NULL){
+    if (m_root==NULL){
         m_root=new keyNode(key,NULL,new valueNode(value));
+        return;
     }
+    
+    keyNode* ptr=m_root;
     
     while (ptr!=NULL){
         if (key==ptr->getKey()){
             ptr->insertValueNode(value);
-            break;
+            return;
         }
         
         if (key<ptr->getKey()){
             if (ptr->getLeft()==NULL){
                 ptr->setLeft(new keyNode(key,ptr,new valueNode(value)));
-                break;
+                return;
             }
         
             else
                 ptr=ptr->getLeft();
         }
+        
         else {
             if (ptr->getRight()==NULL){
                 ptr->setRight(new keyNode(key,ptr,new valueNode(value)));
-                break;
+                return;
             }
         
             else
@@ -205,6 +219,7 @@ void MultiMap::insert(std::string key, unsigned int value){
         }
     }
 }
+
 
 
 /////////////////////////////////////MultiMap::Iterator class
@@ -287,11 +302,15 @@ bool MultiMap::Iterator::next(){
             m_vaNode=m_node->getValueRoot();
             return true;
         }
-        else return false;
+        else {
+            m_node=m_node->getRight();
+            return false;
+        }
     }
     
     return false;
 }
+
 
 
 bool MultiMap::Iterator::prev(){
@@ -317,9 +336,9 @@ bool MultiMap::Iterator::prev(){
     m_node=ptr;
     m_vaNode=m_node->getValueRoot();
     return true;
-  }
+}
 
-    else {
+else {
     //condition: if the node is greater than the node that ptr points to
     if (m_node->getKey()>m_node->getParent()->getKey()){
         m_node=m_node->getParent();
@@ -344,7 +363,10 @@ bool MultiMap::Iterator::prev(){
         return true;
     }
     
-    else return false;
+    else {
+        m_node=m_node->getLeft();
+        return false;
+        }
     }
 
     return false;
@@ -371,6 +393,13 @@ void MultiMap::valueNode::setNext(valueNode* newNode){
     m_next->m_prev=this;
 }
 
+void MultiMap::valueNode::setPrev(valueNode* newNode){
+    m_prev=newNode;
+    m_prev->m_next=this;
+}
+
+
+
 
 
 /////////////////////////////////////MultiMap::keyNode class
@@ -392,6 +421,7 @@ void MultiMap::keyNode::insertValueNode(int value){
         if (ptr==NULL){
             ptr=new valueNode(value);
             temp->setNext(ptr);
+            ptr->setPrev(temp);
             break;
         }
     }
@@ -411,7 +441,7 @@ void MultiMap::keyNode::setRight(keyNode* newNode){
 }
 
 string MultiMap::keyNode::getKey() const{
-    return m_key;
+     return m_key;
 }
 
 MultiMap::keyNode* MultiMap::keyNode::getParent() const{
