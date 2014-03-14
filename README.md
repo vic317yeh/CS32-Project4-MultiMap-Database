@@ -5,6 +5,7 @@ MutiMap - 1) implemented using a binary search tree & 2) key/value pair = string
 
 
 public functions:
+
  void clear()
  
  void insert(std::string key, unsigned int value)
