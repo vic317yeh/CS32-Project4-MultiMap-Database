@@ -1,7 +1,11 @@
 CS32-Project4-MultiMap-Database
 ===============================
-//MutiMap functions:
+MutiMap
+implemented using a binary search tree
+key/value pair = string/int
 
+
+public functions:
 
 void clear()
 
@@ -14,8 +18,10 @@ Iterator findEqualOrSuccessor(std::string key) const
 Iterator findEqualOrPredecessor(std::string key) const
 
 ===============================
-//MultiMap::Iterator functions:
+MultiMap::Iterator functions:
 
+
+public functions:
 
 bool valid() const
 
