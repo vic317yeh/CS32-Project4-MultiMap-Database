@@ -35,3 +35,23 @@ public functions:
  bool prev()
 
 ===============================
+Database
+
+
+
+public functions:
+
+ bool specifySchema(const std::vector<FieldDescriptor>& schema)
+ 
+ bool addRow(const std::vector<std::string>& rowOfData)
+ 
+ bool loadFromURL(std::string url)
+ 
+ bool loadFromFile(std::string filename)
+ 
+ int getNumRows() const
+ 
+ bool getRow(int rowNum, std::vector<std::string>& row) const
+ 
+ int search(const std::vector<SearchCriterion>& searchCriteria,
+const std::vector<SortCriterion>& sortCriteria, std::vector<int>& results)
