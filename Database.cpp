@@ -122,9 +122,6 @@ bool Database::loadFromURL(std::string url){
 }
 
 
-
-
-
 bool Database::loadFromFile(std::string filename){
     std::string page;
     std::ifstream in(filename);
