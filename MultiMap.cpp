@@ -1,11 +1,3 @@
-//
-//  MultiMap.cpp
-//  Project 4
-//
-//  Created by Vic Yeh on 3/11/14.
-//  Copyright (c) 2014 Vic Yeh. All rights reserved.
-//
-
 #include "MultiMap.h"
 
 //////////////////////////////////////MultiMap class
