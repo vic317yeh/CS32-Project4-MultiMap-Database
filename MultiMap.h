@@ -17,6 +17,8 @@ public:
     valueNode* getNext() const;
     valueNode* getPrev() const;
     void setNext(valueNode* newNode);
+    void setPrev(valueNode* newNode);
+
     
 private:
     int m_value;
@@ -28,7 +30,10 @@ private:
 //keyNode
 struct keyNode{
 public:
-    keyNode(string newKey, keyNode* ptr=NULL, valueNode* vptr=NULL):m_key(newKey), m_parent(ptr), valueRoot(vptr){}
+    keyNode(string newKey, keyNode* ptr=NULL, valueNode* vptr=NULL):m_key(newKey), m_parent(ptr), valueRoot(vptr){
+        m_left=NULL;
+        m_right=NULL;
+    }
     void setParent(keyNode* newNode);
     void setLeft(keyNode* newNode);
     void setRight(keyNode* newNode);
@@ -66,7 +71,7 @@ class Iterator{
 };
     
     
-    //MultiMap public member functions
+//MultiMap public member functions
     MultiMap();
     ~MultiMap();
     void clear();
@@ -75,7 +80,9 @@ class Iterator{
     Iterator findEqualOrSuccessor(std::string key) const;
     Iterator findEqualOrPredecessor(std::string key) const;
     
-private:
+
+    
+private: 
     MultiMap(const MultiMap& other);
     MultiMap& operator=(const MultiMap& rhs);
     void deleteSubTree(keyNode*);
@@ -84,3 +91,6 @@ private:
     keyNode* searchEqOrPr(keyNode* node, keyNode* topNode,string key) const;
     keyNode* m_root;
 };
+
+
+#endif /* defined(__Project_4__MultiMap__) */
