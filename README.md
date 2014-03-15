@@ -55,3 +55,6 @@ public functions:
  
  int search(const std::vector<SearchCriterion>& searchCriteria,
 const std::vector<SortCriterion>& sortCriteria, std::vector<int>& results)
+
+===============================
+Note: Tokenizer.h and HTTP.h are provided by the professor
