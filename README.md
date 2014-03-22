@@ -1,10 +1,15 @@
 CS32-Project4-MultiMap-Database
 ===============================
-MutiMap - 1) implemented using a binary search tree & 2) key/value pair = string/int
+##MutiMap 
+
+1) implemented using a binary search tree 
+
+2) key/value pair = string/int
 
 
 
-public functions:
+###public functions
+```ruby
 
  void clear()
  
@@ -15,14 +20,14 @@ public functions:
  Iterator findEqualOrSuccessor(std::string key) const
  
  Iterator findEqualOrPredecessor(std::string key) const
- 
-
-===============================
-MultiMap::Iterator
+ ```
 
 
+##MultiMap::Iterator
 
-public functions:
+
+###public functions
+```ruby
 
  bool valid() const
  
@@ -33,13 +38,16 @@ public functions:
  bool next()
  
  bool prev()
-
-===============================
-Database
+ ```
 
 
+##Database
 
-public functions:
+
+
+###public functions
+```ruby
+
 
  bool specifySchema(const std::vector<FieldDescriptor>& schema)
  
@@ -55,6 +63,6 @@ public functions:
  
  int search(const std::vector<SearchCriterion>& searchCriteria,
 const std::vector<SortCriterion>& sortCriteria, std::vector<int>& results)
-
+```
 ===============================
 Note: Tokenizer.h and HTTP.h are provided by the professor
