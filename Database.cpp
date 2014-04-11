@@ -180,8 +180,7 @@ bool Database::loadFromFile(std::string filename){
 }
 
 
-//incomlete
-//int Database::search(const std::vector<SearchCriterion>& searchCriteria,const std::vector<SortCriterion>& sortCriteria, std::vector<int>& results)
-//{
-//  return 0;
-//}
+int Database::search(const std::vector<SearchCriterion>& searchCriteria,const std::vector<SortCriterion>& sortCriteria, std::vector<int>& results)
+{
+  return 0;
+}
