@@ -178,9 +178,3 @@ bool Database::loadFromFile(std::string filename){
     
     return true;
 }
-
-
-int Database::search(const std::vector<SearchCriterion>& searchCriteria,const std::vector<SortCriterion>& sortCriteria, std::vector<int>& results)
-{
-  return 0;
-}
