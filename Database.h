@@ -8,6 +8,8 @@
 
 class Database {
 public:
+   enum IndexType { it_none, it_indexed };
+
    struct FieldDescriptor {
         std::string name;
         IndexType index;
