@@ -39,14 +39,11 @@ public:
     bool loadFromFile(std::string filename);
     int getNumRows() const;
     bool getRow(int rowNum, std::vector<std::string>& row) const;
-    int search(const std::vector<SearchCriterion>& searchCriteria,const std::vector<SortCriterion>& sortCriteria, std::vector<int>& results);
-    
+
     
 private:
     Database(const Database& other);
     Database& operator=(const Database& rhs);
-    void decraseMergeSort();
-    void increaseMergeSort();
     std::vector<FieldDescriptor> m_schema;
     std::vector<std::vector<std::string>> m_rows;
     std::vector<MultiMap*> m_fieldIndex;
