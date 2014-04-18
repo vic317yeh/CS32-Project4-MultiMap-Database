@@ -8,24 +8,9 @@
 
 class Database {
 public:
-    enum IndexType { it_none, it_indexed };
-    enum OrderingType { ot_ascending, ot_descending };
-    
-    
-    struct FieldDescriptor {
+   struct FieldDescriptor {
         std::string name;
         IndexType index;
-    };
-    
-    struct SearchCriterion {
-        std::string fieldName;
-        std::string minValue;
-        std::string maxValue;
-    };
-    
-    struct SortCriterion {
-        std::string fieldName;
-        OrderingType ordering;
     };
     
     static const int ERROR_RESULT = -1;
